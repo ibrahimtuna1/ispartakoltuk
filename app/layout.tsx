@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "TerapiHome - Profesyonel Koltuk Yıkama",
-  description: "Evde, ofiste ve aracınızda hijyenik koltuk temizliği hizmeti",
+  description: "Evde, ofiste ve aracınızda hijyenik temizlik hizmeti.",
 };
 
 export default function RootLayout({
