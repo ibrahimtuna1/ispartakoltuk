@@ -4,22 +4,13 @@ import { useState } from "react";
 import { MapPin } from "lucide-react";
 
 type Branch = {
-  id: "antalya" | "isparta" | "Burdur";
+  id: "isparta" | "Burdur" | "antalya";
   name: string;
-  addressHtml: string; // satır sonları için <br/> kullanıyoruz
-  mapsQuery: string;   // Google Maps embed için arama parametresi
+  addressHtml: string;
+  mapsQuery: string;
 };
 
 const BRANCHES: Branch[] = [
-  {
-    id: "antalya",
-    name: "Antalya",
-    addressHtml:
-      'Konuksever Mah. Kızılırmak Cad. Çoban Apt No:119A <br />Muratpaşa / Antalya',
-    // Adrese göre embed query (TR formatı iyi çalışır)
-    mapsQuery:
-      "Konuksever Mahallesi Kızılırmak Caddesi Çoban Apartmanı No:119A Muratpaşa Antalya",
-  },
   {
     id: "isparta",
     name: "Isparta",
@@ -32,21 +23,32 @@ const BRANCHES: Branch[] = [
     addressHtml: "Burdur",
     mapsQuery: "Burdur",
   },
+  {
+    id: "antalya",
+    name: "Antalya",
+    addressHtml:
+      'Konuksever Mah. Kızılırmak Cad. Çoban Apt No:119A <br />Muratpaşa / Antalya',
+    mapsQuery:
+      "Konuksever Mahallesi Kızılırmak Caddesi Çoban Apartmanı No:119A Muratpaşa Antalya",
+  },
 ];
 
 export default function BranchPage() {
-  const [active, setActive] = useState<Branch>(BRANCHES[0]);
+  const [active, setActive] = useState<Branch>(BRANCHES[0]); // Isparta default
 
   const src = `https://www.google.com/maps?q=${encodeURIComponent(
     active.mapsQuery
   )}&output=embed`;
 
   return (
-    <main className="min-h-screen bg-gradient-to-r from-black via-black to-orange-900 text-white">
+    <main className="relative min-h-screen text-slate-800">
+      {/* turkuaz → beyaz arka plan */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-50 via-white to-white" />
+
       <div className="mx-auto max-w-6xl px-6 py-10">
         <header className="mb-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-extrabold">Şubelerimiz</h1>
-          <p className="mt-2 text-white/80">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900">Şubelerimiz</h1>
+          <p className="mt-2 text-slate-600">
             Aşağıdaki şubelerden birini seçin; sağdaki haritada konumu görün.
           </p>
         </header>
@@ -63,31 +65,24 @@ export default function BranchPage() {
                   className={`w-full text-left rounded-2xl border p-5 transition backdrop-blur-sm
                     ${
                       isActive
-                        ? "border-orange-400 bg-white/10 shadow-lg"
-                        : "border-white/10 bg-white/5 hover:bg-white/10"
+                        ? "border-teal-500 bg-teal-50 shadow-md"
+                        : "border-slate-200 bg-white/80 hover:bg-white"
                     }`}
                 >
                   <div className="flex items-start gap-3">
-                    <div
-                      className={`rounded-xl p-2 ${
-                        isActive ? "bg-orange-500/20" : "bg-orange-500/10"
-                      }`}
-                    >
+                    <div className={`rounded-xl p-2 ${isActive ? "bg-teal-100" : "bg-teal-50"}`}>
                       <MapPin
-                        className={`h-6 w-6 ${
-                          isActive ? "text-orange-300" : "text-orange-400"
-                        }`}
+                        className={`h-6 w-6 ${isActive ? "text-teal-700" : "text-teal-600"}`}
                       />
                     </div>
                     <div>
-                      <h2 className="text-xl font-semibold">{b.name}</h2>
+                      <h2 className="text-xl font-semibold text-slate-900">{b.name}</h2>
                       <p
-                        className="mt-1 text-sm text-white/85"
-                        // adresi satır kırmalı göstermek için
+                        className="mt-1 text-sm text-slate-600"
                         dangerouslySetInnerHTML={{ __html: b.addressHtml }}
                       />
                       {isActive && (
-                        <span className="mt-2 inline-block rounded-full bg-orange-500/20 px-3 py-1 text-xs text-orange-200">
+                        <span className="mt-2 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs text-teal-700">
                           Seçili
                         </span>
                       )}
@@ -99,10 +94,10 @@ export default function BranchPage() {
           </section>
 
           {/* Sağ: harita */}
-          <section className="rounded-2xl border border-white/10 bg-white/5 p-2 shadow-xl backdrop-blur-sm">
+          <section className="rounded-2xl border border-slate-200 bg-white/80 p-2 shadow-sm backdrop-blur">
             <div className="relative aspect-video w-full overflow-hidden rounded-xl">
               <iframe
-                key={active.id} // seçimde yeniden yüklesin
+                key={active.id}
                 src={src}
                 title={`${active.name} Konumu`}
                 loading="lazy"
@@ -111,8 +106,8 @@ export default function BranchPage() {
                 className="h-full w-full"
               />
             </div>
-            <div className="mt-3 text-center text-sm text-white/75">
-              Görüntülenen: <span className="font-semibold">{active.name}</span>
+            <div className="mt-3 text-center text-sm text-slate-600">
+              Görüntülenen: <span className="font-semibold text-slate-900">{active.name}</span>
             </div>
           </section>
         </div>
