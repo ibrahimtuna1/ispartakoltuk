@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           {/* Hakkımızda */}
           <div>
-            <h3 className="text-lg font-semibold tracking-wide">TerapiHome</h3>
+            <h3 className="text-lg font-semibold tracking-wide">Isparta koltuk yıkama</h3>
             <p className="mt-3 text-white/80 text-sm leading-6">
               Ev/ofis koltukları ve araç döşemelerinde güçlü ekstraksiyonla
               derin kirleri yüzeyin altından çıkarır, hızlı kuruma ve kalıcı
