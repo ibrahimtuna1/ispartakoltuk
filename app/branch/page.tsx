@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MapPin } from "lucide-react";
 
 type Branch = {
-  id: "antalya" | "isparta" | "istanbul";
+  id: "antalya" | "isparta" | "Burdur";
   name: string;
   addressHtml: string; // satır sonları için <br/> kullanıyoruz
   mapsQuery: string;   // Google Maps embed için arama parametresi
@@ -27,10 +27,10 @@ const BRANCHES: Branch[] = [
     mapsQuery: "Isparta Merkez",
   },
   {
-    id: "istanbul",
-    name: "İstanbul",
-    addressHtml: "İstanbul",
-    mapsQuery: "İstanbul",
+    id: "Burdur",
+    name: "Burdur",
+    addressHtml: "Burdur",
+    mapsQuery: "Burdur",
   },
 ];
 

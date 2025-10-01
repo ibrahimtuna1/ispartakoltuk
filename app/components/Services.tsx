@@ -10,7 +10,7 @@ import React from "react";
 type Icon = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 // --- WhatsApp helper: başlığa göre default metin, istenirse özel metin ---
-const WA_PHONE = "905306209416";
+const WA_PHONE = "905545978717";
 const waHref = ({ title, text }: { title: string; text?: string }) => {
   const fallback = `Merhaba, ${title.toLocaleLowerCase("tr-TR")} için randevu almak istiyorum.`;
   const msg = text ?? fallback;
@@ -68,21 +68,6 @@ const SERVICES: {
     ],
     waText:
       "Merhaba, araç koltuğu ve iç detaylı temizlik için YERİNDE TEMİZLİK randevusu almak istiyorum.", // ✅ özel WA metni
-  },
-  {
-    title: "Yat & Tekne Döşeme Temizliği",
-    icon: Ship,
-    desc:
-      "Tuz, nem ve güneş kaynaklı zor lekeleri malzemeye uygun ürünlerle çıkarır; küf ve koku oluşumunu azaltmaya yardımcı oluruz.",
-    bullets: [
-      "Vinyl/deri/döşeme için uygun kimyasal",
-      "Tuz & nem kaynaklı leke giderimi",
-      "UV sonrası matlaşmayı azaltıcı bakım",
-    ],
-    badges: [
-      { icon: ShieldCheck, label: "Malzeme güvenliği" },
-      { icon: Droplets, label: "Küf/koku azaltma" },
-    ],
   },
   {
     title: "Sandalye & Kafe Koltuğu Yıkama",

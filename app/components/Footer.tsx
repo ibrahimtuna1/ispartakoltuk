@@ -33,22 +33,13 @@ export default function Footer() {
             {/* sosyal */}
             <div className="mt-5 flex items-center gap-3">
               <a
-                href="https://www.instagram.com/terapihome.tr"
+                href="https://www.instagram.com/evimindoktorutr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white/5 p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
               >
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="https://www.facebook.com/share/1J3DaHG82Q/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white/5 p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
-              >
-                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -85,32 +76,21 @@ export default function Footer() {
             <h3 className="text-lg font-semibold tracking-wide">İletişim</h3>
             <ul className="mt-3 space-y-3 text-white/85">
               <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-orange-300" />
-                <span>
-                  Konuksever Mah. Kızılırmak Cad. Çoban Apt No:119A <br />
-                  Muratpaşa / Antalya
-                </span>
+                
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5 shrink-0 text-orange-300" />
                 <a href="tel:+905306209416" className="hover:text-orange-300">
-                  +90 530 620 94 16
+                  +90 554 597 87 17
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-5 w-5 shrink-0 text-orange-300" />
-                <a
-                  href="mailto:terapihometr@gmail.com"
-                  className="hover:text-orange-300"
-                >
-                  terapihometr@gmail.com
-                </a>
               </li>
             </ul>
 
             {/* WhatsApp CTA */}
        <a
-  href="https://wa.me/905306209416?text=Merhaba,%20randevu%20almak%20istiyorum."
+  href="https://wa.me/905545978717?text=Merhaba,%20randevu%20almak%20istiyorum."
   target="_blank"
   rel="noopener noreferrer"
   className="mt-5 inline-flex items-center justify-center rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-emerald-600"
@@ -124,7 +104,7 @@ export default function Footer() {
 
         {/* alt çizgi */}
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-center text-xs text-white/70 md:flex-row md:justify-between md:text-left">
-          <p>© {year} TerapiHome. Tüm hakları saklıdır.</p>
+          <p>© {year} işify.com Tüm hakları saklıdır.</p>
 
           {/* en üste dön */}
           <button

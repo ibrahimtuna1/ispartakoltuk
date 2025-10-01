@@ -17,13 +17,13 @@ export default function Topbar() {
           <div className="flex min-w-0 items-center gap-2">
             <MapPin className="h-4 w-4 shrink-0" />
             <span className="truncate">
-              Konuksever Mah. Kızılırmak Cad. Çoban Apt No:119A Muratpaşa / Antalya
+              Hizmet verdiğimiz iller ; Isparta/Burdur
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-2">
             <Phone className="h-4 w-4" />
             <a href="tel:+905306209416" className="font-semibold">
-              0530 620 94 16
+              0554 597 87 17
             </a>
           </div>
         </div>
