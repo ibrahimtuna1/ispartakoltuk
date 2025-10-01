@@ -1,8 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence, type MotionProps, type Transition } from "framer-motion";
+import Image, { type StaticImageData } from "next/image";
+import {
+  motion,
+  AnimatePresence,
+  type MotionProps,
+  type Transition,
+  type PanInfo,
+} from "framer-motion";
 
 import hero1 from "@/public/images/hero1.png";
 import hero2 from "@/public/images/hero2.png";
@@ -16,12 +22,24 @@ const fadeUp = (delay = 0): MotionProps => ({
   transition: { duration: 0.6, ease: EASE, delay },
 });
 
-type Slide = { img: any; title: string; desc: string; alt?: string };
-const SLIDES: Slide[] = [
-{ img: hero1, title: "Ev Koltuğu Yıkama", desc: "Kumaş kanepelerde derinlemesine temizlik; leke, koku ve toz akarlarına veda." },
-{ img: hero2, title: "Araba Koltuğu Temizliği", desc: "Kumaş/deri oto koltuklarında profesyonel temizlik; inatçı lekelerde etkili, hızlı kuruma." },
-{ img: hero3, title: "Sandalye & Döşeme Temizliği", desc: "Yemek sandalyesi, ofis koltuğu ve minderlerde hijyenik yıkama; ferah koku, uzun süreli temizlik." },
+type Slide = { img: StaticImageData; title: string; desc: string; alt?: string };
 
+const SLIDES: Slide[] = [
+  {
+    img: hero1,
+    title: "Ev Koltuğu Yıkama",
+    desc: "Kumaş kanepelerde derinlemesine temizlik; leke, koku ve toz akarlarına veda.",
+  },
+  {
+    img: hero2,
+    title: "Araba Koltuğu Temizliği",
+    desc: "Kumaş/deri oto koltuklarında profesyonel temizlik; inatçı lekelerde etkili, hızlı kuruma.",
+  },
+  {
+    img: hero3,
+    title: "Sandalye & Döşeme Temizliği",
+    desc: "Yemek sandalyesi, ofis koltuğu ve minderlerde hijyenik yıkama; ferah koku, uzun süreli temizlik.",
+  },
 ];
 
 const PHONE_E164 = "+905545978717"; // tel deeplink için
@@ -36,7 +54,10 @@ export default function Hero() {
     return () => clearInterval(t);
   }, []);
 
-  const onDragEnd = (_: any, info: { offset: { x: number } }) => {
+  const onDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     const dx = info.offset.x;
     if (dx > 60) prev();
     else if (dx < -60) next();
@@ -79,10 +100,7 @@ export default function Hero() {
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         onDragEnd={onDragEnd}
-        className="
-          absolute inset-0 grid place-items-center
-          px-6
-        "
+        className="absolute inset-0 grid place-items-center px-6"
       >
         <div className="w-full max-w-3xl text-center md:text-center">
           <motion.h1
@@ -102,9 +120,7 @@ export default function Hero() {
           <motion.a
             {...fadeUp(0.3)}
             href={`tel:${PHONE_E164}`}
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-pink-500/95 px-6 py-3 font-semibold shadow-lg backdrop-blur
-                       hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-white/60 active:scale-[0.98]
-                       text-white"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-pink-500/95 px-6 py-3 font-semibold shadow-lg backdrop-blur hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-white/60 active:scale-[0.98] text-white"
             aria-label="Hemen ara"
           >
             HEMEN ARA
@@ -118,7 +134,9 @@ export default function Hero() {
           <button
             key={idx}
             onClick={() => setI(idx)}
-            className={`pointer-events-auto h-2.5 w-2.5 rounded-full transition-all ${i === idx ? "w-6 bg-white" : "bg-white/60 hover:bg-white/80"}`}
+            className={`pointer-events-auto h-2.5 w-2.5 rounded-full transition-all ${
+              i === idx ? "w-6 bg-white" : "bg-white/60 hover:bg-white/80"
+            }`}
             aria-label={`Slayt ${idx + 1}`}
           />
         ))}

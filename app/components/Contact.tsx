@@ -1,13 +1,14 @@
 "use client";
 
 import { MapPin, Phone, Mail } from "lucide-react";
+import type { MouseEventHandler } from "react";
 
 export default function Contact() {
-  const IG = "evimindoktorutr";
-  const IG_WEB = `https://instagram.com/${IG}`;
+  const IG = "evimindoktorutr" as const;
+  const IG_WEB = `https://instagram.com/${IG}` as const;
 
   // Instagram app → fallback web
-  function openIG(e: any) {
+  const openIG: MouseEventHandler<HTMLAnchorElement> = (e) => {
     e.preventDefault();
     const ua = navigator.userAgent;
     const isAndroid = /Android/i.test(ua);
@@ -23,7 +24,7 @@ export default function Contact() {
     } else {
       window.open(IG_WEB, "_blank");
     }
-  }
+  };
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-r from-black via-black to-orange-900 text-white">
