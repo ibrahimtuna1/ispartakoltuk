@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
-/* Light/Dark temel renkler */
+/* Turkuaz + Beyaz tema */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --brand: #f97316; /* turuncu */
-  --brand-dark: #c2410c;
+  /* Açık tema */
+  --background: #f0fdfa;      /* teal-50 */
+  --foreground: #0f172a;      /* slate-900 */
+  --brand: #14b8a6;           /* teal-500 */
+  --brand-dark: #0d9488;      /* teal-600 */
 }
 
 @theme inline {
@@ -17,15 +18,17 @@
   --font-mono: var(--font-geist-mono, monospace);
 }
 
-/* dark mode */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b1220;    /* koyu mavi-turkuaz taban */
+    --foreground: #e6fffb;    /* çok açık mint/beyaz */
+    --brand: #14b8a6;         /* aynı marka tonu */
+    --brand-dark: #0d9488;
   }
 }
 
-/* body style */
+/* Body */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -34,7 +37,22 @@ body {
   scroll-behavior: smooth;
 }
 
-/* metin linkleri */
+/* İsteğe bağlı: çok hafif dikey parıltı (temizlik vibe) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 184, 166, 0.06) 0%,
+    rgba(125, 211, 252, 0.06) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Linkler */
 a.link {
   color: var(--brand);
   transition: color 0.2s ease-in-out;
@@ -43,7 +61,7 @@ a.link:hover {
   color: var(--brand-dark);
 }
 
-/* butonlar için global stil */
+/* Butonlar */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -52,9 +70,9 @@ a.link:hover {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   background-color: var(--brand);
-  color: white !important; /* her zaman beyaz yazı */
+  color: #ffffff !important; /* her zaman beyaz yazı */
   transition: all 0.2s ease-in-out;
-  text-decoration: none; /* underline olmasın */
+  text-decoration: none;
 }
 .btn:hover {
   background-color: var(--brand-dark);

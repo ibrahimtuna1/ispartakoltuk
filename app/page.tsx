@@ -1,14 +1,17 @@
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
-
+import Topbar from "./components/Topbar";
 
 export default function HomePage() {
   return (
-    <main>
-      <Hero />
-      <Services />
-      <Contact />
-    </main>
+    <>
+      <Topbar />
+      <main>
+        <Hero />
+        <Services />
+        <Contact />
+      </main>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { motion, type MotionProps, type Transition } from "framer-motion";
 import {
-  Sofa, Car, Ship, Armchair, Home, MapPin,
+  Sofa, Car, Armchair, Home, MapPin,
   Droplets, ShieldCheck, CheckCircle2, Sparkles, Clock, PhoneCall
 } from "lucide-react";
 import React from "react";
@@ -59,15 +59,15 @@ const SERVICES: {
       "Koltuk & döşeme derin temizlik",
       "Koku tazeleme, detaylı bakım",
       "Hızlı kuruma, profesyonel ekipman",
-      "Yerinde temizlik (adresinizde)", // ✅ eklendi
+      "Yerinde temizlik (adresinizde)",
     ],
     badges: [
-      { icon: MapPin, label: "Yerinde temizlik" }, // ✅ rozet
+      { icon: MapPin, label: "Yerinde temizlik" },
       { icon: Sparkles, label: "Detaylı iç temizlik" },
       { icon: Clock, label: "Aynı gün hızlandırılmış teslim" },
     ],
     waText:
-      "Merhaba, araç koltuğu ve iç detaylı temizlik için YERİNDE TEMİZLİK randevusu almak istiyorum.", // ✅ özel WA metni
+      "Merhaba, araç koltuğu ve iç detaylı temizlik için YERİNDE TEMİZLİK randevusu almak istiyorum.",
   },
   {
     title: "Sandalye & Kafe Koltuğu Yıkama",
@@ -104,19 +104,20 @@ const SERVICES: {
 export default function Services() {
   return (
     <section id="services" className="relative overflow-hidden">
-      {/* arka plan: siyah → turuncu */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-black via-black to-orange-900" />
-      <div className="pointer-events-none absolute right-[-15%] top-[12%] h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-orange-500/20 blur-[80px]" />
+      {/* arka plan: turkuaz açık degrade */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-teal-50 via-white to-white" />
+      {/* hafif teal glow */}
+      <div className="pointer-events-none absolute right-[-12%] top-[12%] h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-teal-400/20 blur-[80px]" />
 
-      <div className="mx-auto max-w-6xl px-6 py-20 text-white">
+      <div className="mx-auto max-w-6xl px-6 py-20 text-slate-800">
         {/* başlık */}
         <motion.div {...fadeUp(0.05)} className="text-center">
-          <span className="inline-block rounded-full bg-orange-500/15 px-3 py-1 text-sm font-semibold text-orange-300">
+          <span className="inline-block rounded-full bg-teal-500/10 px-3 py-1 text-sm font-semibold text-teal-700">
             Derinlemesine temizlik • Hızlı kuruma
           </span>
-          <h2 className="mt-4 text-3xl font-extrabold md:text-4xl">Hizmetlerimiz</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-white/80">
-            Koltuk, araç, yat/tekne ve işletme oturma gruplarında profesyonel ekipmanla derin temizlik.
+          <h2 className="mt-4 text-3xl font-extrabold text-slate-900 md:text-4xl">Hizmetlerimiz</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+            Koltuk, araç ve işletme oturma gruplarında profesyonel ekipmanla derin temizlik.
           </p>
         </motion.div>
 
@@ -128,21 +129,21 @@ export default function Services() {
               <motion.div
                 key={s.title}
                 {...fadeUp(0.1 + i * 0.08)}
-                className="group rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/10"
+                className="group rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex items-center gap-3">
-                  <div className="rounded-xl bg-orange-500/15 p-3">
-                    <IconEl className="h-7 w-7 text-orange-400" />
+                  <div className="rounded-xl bg-teal-500/10 p-3">
+                    <IconEl className="h-7 w-7 text-teal-600" />
                   </div>
-                  <h3 className="text-xl font-semibold">{s.title}</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">{s.title}</h3>
                 </div>
 
-                <p className="mt-3 text-white/85">{s.desc}</p>
+                <p className="mt-3 text-slate-700">{s.desc}</p>
 
                 <ul className="mt-4 space-y-2 text-sm">
                   {s.bullets.map((b) => (
-                    <li key={b} className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                    <li key={b} className="flex items-center gap-2 text-slate-700">
+                      <CheckCircle2 className="h-5 w-5 text-teal-600" />
                       {b}
                     </li>
                   ))}
@@ -150,8 +151,11 @@ export default function Services() {
 
                 <div className="mt-5 flex flex-wrap items-center gap-2">
                   {s.badges.map(({ icon: BIcon, label }) => (
-                    <span key={label} className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs">
-                      <BIcon className="h-4 w-4" /> {label}
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700"
+                    >
+                      <BIcon className="h-4 w-4 text-teal-600" /> {label}
                     </span>
                   ))}
                 </div>
@@ -160,7 +164,7 @@ export default function Services() {
                   href={waHref({ title: s.title, text: s.waText })}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-white shadow transition hover:bg-emerald-600"
+                  className="mt-6 inline-flex items-center justify-center rounded-lg bg-teal-500 px-5 py-3 font-semibold text-white shadow transition hover:bg-teal-600"
                 >
                   WhatsApp’tan Randevu Al
                 </a>
@@ -172,22 +176,22 @@ export default function Services() {
         {/* güven/süreç */}
         <motion.div
           {...fadeUp(0.26)}
-          className="mt-14 grid grid-cols-1 gap-6 rounded-2xl bg-white/5 p-6 backdrop-blur-sm md:grid-cols-3"
+          className="mt-14 grid grid-cols-1 gap-6 rounded-2xl border border-slate-200 bg-white/80 p-6 text-slate-800 backdrop-blur md:grid-cols-3"
         >
           <div className="text-center">
-            <PhoneCall className="mx-auto h-8 w-8 text-orange-400" />
-            <p className="mt-2 font-semibold">Hızlı Randevu</p>
-            <p className="text-sm text-white/80">WhatsApp’tan anında dönüş</p>
+            <PhoneCall className="mx-auto h-8 w-8 text-teal-600" />
+            <p className="mt-2 font-semibold text-slate-900">Hızlı Randevu</p>
+            <p className="text-sm text-slate-600">WhatsApp’tan anında dönüş</p>
           </div>
           <div className="text-center">
-            <ShieldCheck className="mx-auto h-8 w-8 text-orange-400" />
-            <p className="mt-2 font-semibold">Kumaş Güvenliği</p>
-            <p className="text-sm text-white/80">Uygun ürün, kalıntı bırakmaz</p>
+            <ShieldCheck className="mx-auto h-8 w-8 text-teal-600" />
+            <p className="mt-2 font-semibold text-slate-900">Kumaş Güvenliği</p>
+            <p className="text-sm text-slate-600">Uygun ürün, kalıntı bırakmaz</p>
           </div>
           <div className="text-center">
-            <Sparkles className="mx-auto h-8 w-8 text-orange-400" />
-            <p className="mt-2 font-semibold">Derin Hijyen</p>
-            <p className="text-sm text-white/80">Güçlü ekstraksiyon ile</p>
+            <Sparkles className="mx-auto h-8 w-8 text-teal-600" />
+            <p className="mt-2 font-semibold text-slate-900">Derin Hijyen</p>
+            <p className="text-sm text-slate-600">Güçlü ekstraksiyon ile</p>
           </div>
         </motion.div>
       </div>
